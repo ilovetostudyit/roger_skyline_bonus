@@ -1,0 +1,325 @@
+<head>
+  <script type="text/javascript">
+    window.onload = init;
+
+    function init(){
+      i = 0
+      rest_flag = 1
+      button = document.getElementById("addButton")
+      button2 = document.getElementById("addButton2")
+      button3 = document.getElementById("addButton3")
+      button4 = document.getElementById("addButton4")
+      button5 = document.getElementById("addButton5")
+      button6 = document.getElementById("addButton6")
+      button7 = document.getElementById("addButton7")
+      button8 = document.getElementById("addButton8")
+      button9 = document.getElementById("addButton9")
+      div = document.getElementById( 'div1' );
+      scoreX1 = document.getElementById("scoreX1")
+      scoreX2 = document.getElementById("scoreX2")
+      scoreX3 = document.getElementById("scoreX3")
+      score03 = document.getElementById("score01")
+      score02 = document.getElementById("score02")
+      score01 = document.getElementById("score03")
+      color_check(button)
+      color_check(button2)
+      color_check(button3)
+      color_check(button4)
+      color_check(button5)
+      color_check(button6)
+      color_check(button7)
+      color_check(button8)
+      color_check(button9)
+      color_check(turncheck)
+      color_check(score01)
+      color_check(score02)
+      color_check(score03)
+      color_check(scoreX1)
+      color_check(scoreX2)
+      color_check(scoreX3)
+      turncheck = document.getElementById("turncheck")
+      restart = document.getElementById("restart")
+      reset = document.getElementById("reset")
+      restart.onclick = ft_restart
+      reset.onclick = ft_reset
+      button.onclick = handleButtonClick
+      button2.onclick = handleButtonClick2
+      button3.onclick = handleButtonClick3
+      button4.onclick = handleButtonClick4
+      button5.onclick = handleButtonClick5
+      button6.onclick = handleButtonClick6
+      button7.onclick = handleButtonClick7
+      button8.onclick = handleButtonClick8
+      button9.onclick = handleButtonClick9
+    }
+
+    function ft_reset()
+    {
+      global_restart()
+      disable_check()
+      ft_restart()
+    }
+
+    function the_x_win()
+    {
+        alert("X WINS!")
+        if (scoreX1.style.background == "rgb(174, 198, 207) none repeat scroll 0% 0%")
+        {
+          scoreX1.style.background = '#FDFD96'
+        }
+        else if (scoreX2.style.background == "rgb(174, 198, 207) none repeat scroll 0% 0%")
+        {
+          scoreX2.style.background = '#FDFD96'
+        }
+        else if (scoreX3.style.background == "rgb(174, 198, 207) none repeat scroll 0% 0%")
+        {
+          scoreX3.style.background = '#FDFD96'
+          alert("AMAZING, MISTER 0, YOUR WON!")
+          div1.style.background = '#FDFD96'
+          global_restart()
+        }
+        disable_check()
+        ft_restart()
+    }
+
+    function global_restart()
+    {
+      scoreX1.style.background = '#AEC6CF'
+      scoreX2.style.background = '#AEC6CF'
+      scoreX3.style.background = '#AEC6CF'
+      score01.style.background = '#AEC6CF'
+      score02.style.background = '#AEC6CF'
+      score03.style.background = '#AEC6CF'
+    }
+
+    function the_y_win()
+    {
+        alert("0 WINS!")
+        if (score01.style.background == "rgb(174, 198, 207) none repeat scroll 0% 0%")
+        {
+          score01.style.background = '#F49AC2'
+        }
+        else if (score02.style.background == "rgb(174, 198, 207) none repeat scroll 0% 0%")
+        {
+          score02.style.background = '#F49AC2'
+        }
+        else if (score03.style.background == "rgb(174, 198, 207) none repeat scroll 0% 0%")
+        {
+          score03.style.background = '#F49AC2'
+          alert("AMAZING, MISTER 0, YOUR WON!")
+          div1.style.background = '#F49AC2'
+          global_restart()
+        }
+        disable_check()
+        ft_restart()
+    }
+
+    function row_check(chr)
+    {
+      if (button.value == chr && button2.value == chr && button3.value == chr)
+        return(1)
+      else if (button4.value == chr && button5.value == chr && button6.value == chr)
+        return(1)
+      else if (button7.value == chr && button8.value == chr && button9.value == chr)
+        return(1)
+      else if (button.value == chr && button4.value == chr && button7.value == chr)
+        return(1)
+      else if (button2.value == chr && button5.value == chr && button8.value == chr)
+        return(1)
+      else if (button3.value == chr && button6.value == chr && button9.value == chr)
+        return(1)
+      else if (button.value == chr && button5.value == chr && button9.value == chr)
+        return(1)
+      else if (button3.value == chr && button5.value == chr && button7.value == chr)
+        return(1)
+      return(0)
+    }
+
+    function winner_check()
+    {
+      if (row_check("X") == 1)
+        the_x_win()
+      else if (row_check("0") == 1)
+        the_y_win()
+      else if (i == 9)
+      {
+        alert("Ничья!")
+        disable_check()
+        ft_restart()
+
+      }
+    }
+
+    function disable_but(button)
+    {
+      if (button.disabled == true)
+          button.disabled = false
+      else if (button.disabled == false)
+          button.disabled = true
+    }
+
+    function disable_check()
+    {
+      if (rest_flag == 1)
+      {
+        disable_but(button)
+        disable_but(button2)
+        disable_but(button3)
+        disable_but(button4)
+        disable_but(button5)
+        disable_but(button6)
+        disable_but(button7)
+        disable_but(button8)
+        disable_but(button9)
+      }
+    }
+
+    function ft_reboot()
+    {
+      i = 0
+      rest_flag = 1
+      button.value = " "
+      button2.value = " "
+      button3.value = " "
+      button4.value = " "
+      button5.value = " "
+      button6.value = " "
+      button7.value = " "
+      button8.value = " "
+      button9.value = " "
+      turncheck.value = "X"
+      color_check(button)
+      color_check(button2)
+      color_check(button3)
+      color_check(button4)
+      color_check(button5)
+      color_check(button6)
+      color_check(button7)
+      color_check(button8)
+      color_check(button9)
+      color_check(turncheck)
+    }
+
+    function ft_restart()
+    {
+      rest_flag = 0
+      if (confirm("Рестарт?")){
+        ft_reboot()
+        disable_check()
+      }
+    }
+
+    function ft_turncheck()
+    {
+        if ((i % 2) == 0)
+          return("X")
+        else
+          return("0")
+    }
+
+    function button_check(button)
+    {
+      if (button.value == " "){
+        button.value = ft_turncheck()
+        color_check(button)
+        i++
+        turncheck.value = ft_turncheck()
+        color_check(turncheck)
+      }
+      winner_check()
+    }
+
+    function color_check(button)
+    {
+      if (button.value == " ")
+          button.style.background = '#AEC6CF'
+      else if (button.value == "X")
+          button.style.background = '#FDFD96'
+      else
+          button.style.background = '#F49AC2'
+    }
+
+    function handleButtonClick() {
+      button_check(button)
+    }
+
+    function handleButtonClick2() {
+      button_check(button2)
+    }
+
+    function handleButtonClick3() {
+      button_check(button3)
+    }
+
+    function handleButtonClick4() {
+      button_check(button4)
+    }
+
+    function handleButtonClick5() {
+      button_check(button5)
+    }
+
+    function handleButtonClick6() {
+      button_check(button6)
+    }
+
+    function handleButtonClick7() {
+      button_check(button7)
+    }
+
+    function handleButtonClick8() {
+      button_check(button8)
+    }
+
+    function handleButtonClick9() {
+      button_check(button9)
+    }
+  </script>
+  <style type="text/css">
+    div {
+     height: 200px; /* Высота блока */
+     width: 200px; /* Ширина блока */
+     overflow: auto; /* Добавляем полосы прокрутки */
+     padding-left: 15px; /* Отступ от текста слева */
+     background: #ffb3ba;
+    }
+  </style>
+</head>
+<body>
+    <div id="div1">
+      <h1><span id="allForms"></span> Ehaggon's <br> <a class="title">Tik <br> Tak <br> Toe</a></h1>
+    </div>
+    <form>
+      <h2>Now is his turn:</h2>
+      <button disabled id="turncheck" style="height: 100px; width: 100px; font-size: 50px" value="X"> </button>
+      <br><br>
+      <input type="button" id="addButton" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <input type="button" id="addButton2" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <input type="button" id="addButton3" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <br>
+      <input type="button" id="addButton4" style="height: 100px; width: 100px; font-size: 50px"  value=" ">
+      <input type="button" id="addButton5" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <input type="button" id="addButton6" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <br>
+      <input type="button" id="addButton7" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <input type="button" id="addButton8" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <input type="button" id="addButton9" style="height: 100px; width: 100px; font-size: 50px" value=" ">
+      <br><br>
+      <input type="button" id="restart" style="height: 50px; width: 100px; font-size: 20px" value="Restart">
+      <input type="button" id="reset" style="height: 50px; width: 100px; font-size: 20px" value="Reset">
+      <br><br>
+      <button disabled id="scoreX1" style="height: 50px; width: 50px; font-size: 50px" value=" "> </button>
+      <button disabled id="scoreX2" style="height: 50px; width: 50px; font-size: 50px" value=" "> </button>
+      <button disabled id="scoreX3" style="height: 50px; width: 50px; font-size: 50px" value=" "> </button>
+      <button disabled id="score01" style="height: 50px; width: 50px; font-size: 50px" value=" "> </button>
+      <button disabled id="score02" style="height: 50px; width: 50px; font-size: 50px" value=" "> </button>
+      <button disabled id="score03" style="height: 50px; width: 50px; font-size: 50px" value=" "> </button>
+
+    </form>
+    <ul id = "catlist">
+        
+    </ul>
+    </div>
+  </body>
+  
+  
